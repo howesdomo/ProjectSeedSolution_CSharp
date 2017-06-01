@@ -39,9 +39,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EML.Util">
-      <HintPath>DLL\EML.Util.dll</HintPath>
-    </Reference>
+    <Reference Include="EML.Util, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -149,6 +147,9 @@
     <None Include="DataSources\UserStruct.dbml.layout">
       <DependentUpon>UserStruct.dbml</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DLL\EML.Util.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
