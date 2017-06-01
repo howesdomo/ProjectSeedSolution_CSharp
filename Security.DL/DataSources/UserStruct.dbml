@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="EML_HNGSL_Security" Class="UserStructDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.1.6;Initial Catalog=EML_HNGSL_Security;User ID=sa" SettingsObjectName="Security.DL.Properties.Settings" SettingsPropertyName="EML_HNGSL_SecurityConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.UserRole" Member="UserRole">
+    <Type Name="UserRole">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="RoleID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="LastUpdateUserID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="LastUpdateDatetime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Effectiveness" Type="System.Boolean" DbType="bit" CanBeNull="true" />
+      <Association Name="RO_User_UserRole" Member="RO_User" AccessModifier="Internal" ThisKey="UserID" OtherKey="UserID" Type="RO_User" IsForeignKey="true" />
+      <Association Name="UserMTR_UserRole" Member="UserMTR" AccessModifier="Internal" ThisKey="UserID" OtherKey="ID" Type="UserMTR" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="RO_RoleMTR_UserRole" Member="RO_RoleMTR" ThisKey="RoleID" OtherKey="ID" Type="RO_RoleMTR" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="" Member="RO_User">
+    <Type Name="RO_User">
+      <Column Name="UserID" Type="System.Guid" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" CanBeNull="false" />
+      <Column Name="LoginAccount" Type="System.String" CanBeNull="false" />
+      <Column Name="RoleGroup" Type="System.String" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" CanBeNull="false" />
+      <Column Name="RoleID" Type="System.Guid" CanBeNull="false" />
+      <Column Name="Effectiveness" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" CanBeNull="false" />
+      <Association Name="RO_User_UserRole" Member="UserRole" ThisKey="UserID" OtherKey="UserID" Type="UserRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserMTR" Member="UserMTR">
+    <Type Name="UserMTR">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LoginAccount" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatorID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="LastUpdateDatetime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Effectiveness" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Remark1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Remark2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Remark3" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="UserMTR_UserRole" Member="UserRole" ThisKey="ID" OtherKey="UserID" Type="UserRole" />
+      <Association Name="UserMTR_UserLocationRelation" Member="UserLocationRelation" ThisKey="ID" OtherKey="UserID" Type="UserLocationRelation" />
+      <Association Name="UserMTR_UserDepartmentRelation" Member="UserDepartmentRelation" ThisKey="ID" OtherKey="UserID" Type="UserDepartmentRelation" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RoleMTR" Member="RO_RoleMTR">
+    <Type Name="RO_RoleMTR">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IsAdminstrator" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LastUpdateUserID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="LastUpdateDatetime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Effectiveness" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="RO_RoleMTR_UserRole" Member="UserRole" AccessModifier="Internal" ThisKey="ID" OtherKey="RoleID" Type="UserRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserLocationRelation" Member="UserLocationRelation">
+    <Type Name="UserLocationRelation">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="CompanyCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="LocationTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LocationCode" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Department" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LastUpdateUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdateDatetime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="UserMTR_UserLocationRelation" Member="UserMTR" AccessModifier="Internal" ThisKey="UserID" OtherKey="ID" Type="UserMTR" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserDepartmentRelation" Member="UserDepartmentRelation">
+    <Type Name="UserDepartmentRelation">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="DepartmentID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdateUserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="UserMTR_UserDepartmentRelation" Member="UserMTR" AccessModifier="Internal" ThisKey="UserID" OtherKey="ID" Type="UserMTR" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

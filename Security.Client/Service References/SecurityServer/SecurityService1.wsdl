@@ -1,0 +1,2499 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetServiceDateTime">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetServiceDateTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetServiceDateTimeResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUpdateInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="tns:EnumApplication" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="EnumApplication">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="Client" />
+          <s:enumeration value="PDA" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetUpdateInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUpdateInfoResult" type="tns:UpdateInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UpdateInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReturnResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Version" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Items" type="tns:ArrayOfItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReturnResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Result" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Item" nillable="true" type="tns:Item" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Item">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Url" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocalPaths" type="tns:ArrayOfString" />
+          <s:element minOccurs="1" maxOccurs="1" name="FileLen" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConfigSettingInit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SecConnHost" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SecConnCatalog" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SecConnUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SecConnPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EMLConnHost" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EMLConnCatalog" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EMLConnUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EMLConnPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfigSettingInitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConfigSettingInitResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertProvideLocation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="location" type="tns:ProvideLocation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ProvideLocation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocationCode1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocationName1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocationCode2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocationName2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocationCode3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocationName3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocationCode4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocationName4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocationCode5" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocationName5" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LocationTypeID_1" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LocationTypeID_2" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LocationTypeID_3" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LocationTypeID_4" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LocationTypeID_5" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertProvideLocationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertProvideLocationResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationProvideLocationID">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLocationProvideLocationIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLocationProvideLocationIDResult" type="tns:ArrayOfLocation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLocation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Location" nillable="true" type="tns:Location" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Location">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="_Capacity" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="_UM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_UMName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParentID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LocationTypeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProvideLocationID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParentCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentTypeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Capacity" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="UM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UMName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertLocationCapacity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="companyCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LocationID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="capacity" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="UM" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertLocationCapacityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertLocationCapacityResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateLocatorAndCapacity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="locationID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="capacity" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="UM" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateLocatorAndCapacityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateLocatorAndCapacityResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteLocatorAndCapacity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="locationID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteLocatorAndCapacityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteLocatorAndCapacityResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckrContainerRelationForLocator">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="locationCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="locationTypeID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="companyCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckrContainerRelationForLocatorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckrContainerRelationForLocatorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationProvideLocationIDByTypeControlKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationProvideLocationIDByTypeControlKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLocationProvideLocationIDByTypeControlKeyResult" type="tns:ArrayOfLocation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationTypeByTypeControlKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationTypeByTypeControlKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLocationTypeByTypeControlKeyResult" type="tns:ArrayOfLocationType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLocationType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LocationType" nillable="true" type="tns:LocationType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LocationType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLocationByTypeControlKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationByTypeControlKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLocationByTypeControlKeyResult" type="tns:ArrayOfLocation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationByTypeControlKeyParentID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="parentID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationByTypeControlKeyParentIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLocationByTypeControlKeyParentIDResult" type="tns:ArrayOfLocation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationTreeList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLocationTreeListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLocationTreeListResult" type="tns:ArrayOfLocation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationTypeList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLocationTypeListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLocationTypeListResult" type="tns:ArrayOfLocationType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertLocation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="tns:Location" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertLocationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertLocationResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckLocationIsExist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parentId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="locationTypeID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckLocationIsExistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckLocationIsExistResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteLocation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="locationCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteLocationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteLocationResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateLocation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="tns:Location" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateLocationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateLocationResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="companyCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="locationName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="locationTypeID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLocationByNameResult" type="tns:Location" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDepartmentTreeList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDepartmentTreeListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDepartmentTreeListResult" type="tns:ArrayOfDepartment" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDepartment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Department" nillable="true" type="tns:Department" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Department">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParentID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetProvideLocationByCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="companyCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="locationCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="locationTypeID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProvideLocationByCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProvideLocationByCodeResult" type="tns:ProvideLocation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="account" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="device" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Account" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocationList" type="tns:ArrayOfLocation" />
+          <s:element minOccurs="0" maxOccurs="1" name="AllLocationList" type="tns:ArrayOfLocation" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoleList" type="tns:ArrayOfRole" />
+          <s:element minOccurs="0" maxOccurs="1" name="PermissionList" type="tns:ArrayOfPermission" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepartmentList" type="tns:ArrayOfDepartment" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRole">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Role" nillable="true" type="tns:Role" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Role">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPermission">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Permission" nillable="true" type="tns:Permission" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Permission">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PermissionID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ModuleID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ModuleName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Seq" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClassName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ChangePassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="account" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oldPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newPassword" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="companyCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangePasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChangePasswordResult" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserByUserName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserByUserNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserByUserNameResult" type="tns:ArrayOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Decrypt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="str" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DecryptResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DecryptResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Encrypt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="str" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EncryptResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EncryptResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckServiceConnection">
+        <s:complexType />
+      </s:element>
+      <s:element name="CheckServiceConnectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckServiceConnectionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddRole">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="role" type="tns:RoleMTR" />
+            <s:element minOccurs="0" maxOccurs="1" name="newList" type="tns:ArrayOfRolePromission" />
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RoleMTR">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoleName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAdminstrator" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdateUserID" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdateDatetime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Effectiveness" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="RolePromission" type="tns:ArrayOfRolePromission" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRolePromission">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RolePromission" nillable="true" type="tns:RolePromission" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RolePromission">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="RoleID" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="RightID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdateUserID" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdateDatetime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Effectiveness" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="RO_SysPromissionMTR" type="tns:ArrayOfRO_SysPromissionMTR" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRO_SysPromissionMTR">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RO_SysPromissionMTR" nillable="true" type="tns:RO_SysPromissionMTR" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RO_SysPromissionMTR">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModuleID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="PermissionName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SysCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Seq" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RO_SysModuleMTR" type="tns:ArrayOfRO_SysModuleMTR" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRO_SysModuleMTR">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RO_SysModuleMTR" nillable="true" type="tns:RO_SysModuleMTR" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RO_SysModuleMTR">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="ModuleName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddRoleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddRoleResult" type="tns:ReturnMessage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ReturnMessage">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteRole">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="role" type="tns:RoleMTR" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteRoleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteRoleResult" type="tns:ReturnMessage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllRoles">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllRolesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllRolesResult" type="tns:ArrayOfRoleMTR" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRoleMTR">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RoleMTR" nillable="true" type="tns:RoleMTR" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRolesByCondition">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rolename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRolesByConditionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRolesByConditionResult" type="tns:ArrayOfRoleMTR" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPermissionByUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="u" type="tns:UserMTR" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserMTR">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="LoginAccount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatorID" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdateDatetime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Effectiveness" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Remark3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserRole" type="tns:ArrayOfUserRole" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserLocationRelation" type="tns:ArrayOfUserLocationRelation" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserDepartmentRelation" type="tns:ArrayOfUserDepartmentRelation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUserRole">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserRole" nillable="true" type="tns:UserRole" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserRole">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="RoleID" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdateUserID" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdateDatetime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Effectiveness" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="RO_RoleMTR" type="tns:RO_RoleMTR" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RO_RoleMTR">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoleName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAdminstrator" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdateUserID" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdateDatetime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Effectiveness" nillable="true" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUserLocationRelation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserLocationRelation" nillable="true" type="tns:UserLocationRelation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserLocationRelation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LocationTypeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocationCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Department" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdateUserID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdateDatetime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUserDepartmentRelation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserDepartmentRelation" nillable="true" type="tns:UserDepartmentRelation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserDepartmentRelation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="DepartmentID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdateUserID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdateTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPermissionByUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPermissionByUserResult" type="tns:ArrayOfRO_SysPromissionMTR" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModiftyRole">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="role" type="tns:RoleMTR" />
+            <s:element minOccurs="0" maxOccurs="1" name="newList" type="tns:ArrayOfRolePromission" />
+            <s:element minOccurs="0" maxOccurs="1" name="delList" type="tns:ArrayOfRolePromission" />
+            <s:element minOccurs="1" maxOccurs="1" name="userID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModiftyRoleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModiftyRoleResult" type="tns:ReturnMessage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllModules">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllModulesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllModulesResult" type="tns:ArrayOfSysModuleMTR" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSysModuleMTR">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SysModuleMTR" nillable="true" type="tns:SysModuleMTR" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SysModuleMTR">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="ModuleName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SysPromissionMTR" type="tns:ArrayOfSysPromissionMTR" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSysPromissionMTR">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SysPromissionMTR" nillable="true" type="tns:SysPromissionMTR" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SysPromissionMTR">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModuleID" nillable="true" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="PermissionName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SysCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Seq" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllModuleList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllModuleListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllModuleListResult" type="tns:ArrayOfPermissionModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPermissionModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PermissionModel" nillable="true" type="tns:PermissionModel" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PermissionModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ModuleID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ModuleName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PermissionName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SysCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Seq" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LoginSecurityMgrSys">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginAccount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginSecurityMgrSysResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginSecurityMgrSysResult" type="tns:UserMTR" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUser">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserResult" type="tns:UserMTR" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:UserMTR" />
+            <s:element minOccurs="0" maxOccurs="1" name="newList" type="tns:ArrayOfUserRole" />
+            <s:element minOccurs="0" maxOccurs="1" name="userLocationList" type="tns:ArrayOfUserLocationRelation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddUserResult" type="tns:ReturnMessage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:UserMTR" />
+            <s:element minOccurs="0" maxOccurs="1" name="newList" type="tns:ArrayOfUserRole" />
+            <s:element minOccurs="0" maxOccurs="1" name="delList" type="tns:ArrayOfUserRole" />
+            <s:element minOccurs="0" maxOccurs="1" name="userLocation" type="tns:ArrayOfUserLocationRelation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModifyUserResult" type="tns:ReturnMessage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyPassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:UserMTR" />
+            <s:element minOccurs="0" maxOccurs="1" name="newPwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyPasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModifyPasswordResult" type="tns:ReturnMessage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:UserMTR" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteUserResult" type="tns:ReturnMessage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllUsers">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllUsersResult" type="tns:ArrayOfUserMTR" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUserMTR">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UserMTR" nillable="true" type="tns:UserMTR" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUsersByCondition">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsersByConditionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUsersByConditionResult" type="tns:ArrayOfUserMTR" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsersByRoleID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pRoleID" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsersByRoleIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUsersByRoleIDResult" type="tns:ArrayOfRO_User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfRO_User">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RO_User" nillable="true" type="tns:RO_User" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RO_User">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LoginAccount" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RoleGroup" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="RoleID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="Effectiveness" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserRole" type="tns:ArrayOfUserRole" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUserRole">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserRoleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserRoleResult" type="tns:ArrayOfUserRole" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserLocationByUserID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserLocationByUserIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserLocationByUserIDResult" type="tns:ArrayOfUserLocationRelation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserDepartmentByUserID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserDepartmentByUserIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserDepartmentByUserIDResult" type="tns:ArrayOfUserDepartmentRelation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUserSecond">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:UserMTR" />
+            <s:element minOccurs="0" maxOccurs="1" name="newList" type="tns:ArrayOfUserRole" />
+            <s:element minOccurs="0" maxOccurs="1" name="userDepartmentList" type="tns:ArrayOfUserDepartmentRelation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUserSecondResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddUserSecondResult" type="tns:ReturnMessage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyUserSecond">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="tns:UserMTR" />
+            <s:element minOccurs="0" maxOccurs="1" name="newList" type="tns:ArrayOfUserRole" />
+            <s:element minOccurs="0" maxOccurs="1" name="delList" type="tns:ArrayOfUserRole" />
+            <s:element minOccurs="0" maxOccurs="1" name="userDepartmentList" type="tns:ArrayOfUserDepartmentRelation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModifyUserSecondResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModifyUserSecondResult" type="tns:ReturnMessage" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetServiceDateTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetServiceDateTime" />
+  </wsdl:message>
+  <wsdl:message name="GetServiceDateTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetServiceDateTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUpdateInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUpdateInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetUpdateInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUpdateInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfigSettingInitSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfigSettingInit" />
+  </wsdl:message>
+  <wsdl:message name="ConfigSettingInitSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfigSettingInitResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertProvideLocationSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertProvideLocation" />
+  </wsdl:message>
+  <wsdl:message name="InsertProvideLocationSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertProvideLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationProvideLocationIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocationProvideLocationID" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationProvideLocationIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocationProvideLocationIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertLocationCapacitySoapIn">
+    <wsdl:part name="parameters" element="tns:InsertLocationCapacity" />
+  </wsdl:message>
+  <wsdl:message name="InsertLocationCapacitySoapOut">
+    <wsdl:part name="parameters" element="tns:InsertLocationCapacityResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLocatorAndCapacitySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateLocatorAndCapacity" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLocatorAndCapacitySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateLocatorAndCapacityResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLocatorAndCapacitySoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteLocatorAndCapacity" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLocatorAndCapacitySoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteLocatorAndCapacityResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckrContainerRelationForLocatorSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckrContainerRelationForLocator" />
+  </wsdl:message>
+  <wsdl:message name="CheckrContainerRelationForLocatorSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckrContainerRelationForLocatorResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationProvideLocationIDByTypeControlKeySoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocationProvideLocationIDByTypeControlKey" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationProvideLocationIDByTypeControlKeySoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocationProvideLocationIDByTypeControlKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationTypeByTypeControlKeySoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocationTypeByTypeControlKey" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationTypeByTypeControlKeySoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocationTypeByTypeControlKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationByTypeControlKeySoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocationByTypeControlKey" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationByTypeControlKeySoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocationByTypeControlKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationByTypeControlKeyParentIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocationByTypeControlKeyParentID" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationByTypeControlKeyParentIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocationByTypeControlKeyParentIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationTreeListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocationTreeList" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationTreeListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocationTreeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationTypeListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocationTypeList" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationTypeListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocationTypeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertLocationSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertLocation" />
+  </wsdl:message>
+  <wsdl:message name="InsertLocationSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckLocationIsExistSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckLocationIsExist" />
+  </wsdl:message>
+  <wsdl:message name="CheckLocationIsExistSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckLocationIsExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLocationSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteLocation" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLocationSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLocationSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateLocation" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLocationSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationByNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocationByName" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationByNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocationByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDepartmentTreeListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDepartmentTreeList" />
+  </wsdl:message>
+  <wsdl:message name="GetDepartmentTreeListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDepartmentTreeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProvideLocationByCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProvideLocationByCode" />
+  </wsdl:message>
+  <wsdl:message name="GetProvideLocationByCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProvideLocationByCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:ChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="ChangePasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByUserNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserByUserName" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByUserNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserByUserNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="DecryptSoapIn">
+    <wsdl:part name="parameters" element="tns:Decrypt" />
+  </wsdl:message>
+  <wsdl:message name="DecryptSoapOut">
+    <wsdl:part name="parameters" element="tns:DecryptResponse" />
+  </wsdl:message>
+  <wsdl:message name="EncryptSoapIn">
+    <wsdl:part name="parameters" element="tns:Encrypt" />
+  </wsdl:message>
+  <wsdl:message name="EncryptSoapOut">
+    <wsdl:part name="parameters" element="tns:EncryptResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckServiceConnectionSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckServiceConnection" />
+  </wsdl:message>
+  <wsdl:message name="CheckServiceConnectionSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckServiceConnectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddRoleSoapIn">
+    <wsdl:part name="parameters" element="tns:AddRole" />
+  </wsdl:message>
+  <wsdl:message name="AddRoleSoapOut">
+    <wsdl:part name="parameters" element="tns:AddRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRoleSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteRole" />
+  </wsdl:message>
+  <wsdl:message name="DeleteRoleSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllRolesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllRoles" />
+  </wsdl:message>
+  <wsdl:message name="GetAllRolesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRolesByConditionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRolesByCondition" />
+  </wsdl:message>
+  <wsdl:message name="GetRolesByConditionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRolesByConditionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPermissionByUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPermissionByUser" />
+  </wsdl:message>
+  <wsdl:message name="GetPermissionByUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPermissionByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModiftyRoleSoapIn">
+    <wsdl:part name="parameters" element="tns:ModiftyRole" />
+  </wsdl:message>
+  <wsdl:message name="ModiftyRoleSoapOut">
+    <wsdl:part name="parameters" element="tns:ModiftyRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllModulesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllModules" />
+  </wsdl:message>
+  <wsdl:message name="GetAllModulesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllModulesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllModuleListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllModuleList" />
+  </wsdl:message>
+  <wsdl:message name="GetAllModuleListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllModuleListResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginSecurityMgrSysSoapIn">
+    <wsdl:part name="parameters" element="tns:LoginSecurityMgrSys" />
+  </wsdl:message>
+  <wsdl:message name="LoginSecurityMgrSysSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginSecurityMgrSysResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="GetUserSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUser" />
+  </wsdl:message>
+  <wsdl:message name="AddUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModifyUserSoapIn">
+    <wsdl:part name="parameters" element="tns:ModifyUser" />
+  </wsdl:message>
+  <wsdl:message name="ModifyUserSoapOut">
+    <wsdl:part name="parameters" element="tns:ModifyUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModifyPasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:ModifyPassword" />
+  </wsdl:message>
+  <wsdl:message name="ModifyPasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:ModifyPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteUser" />
+  </wsdl:message>
+  <wsdl:message name="DeleteUserSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllUsers" />
+  </wsdl:message>
+  <wsdl:message name="GetAllUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersByConditionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUsersByCondition" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersByConditionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUsersByConditionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersByRoleIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUsersByRoleID" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersByRoleIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUsersByRoleIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserRoleSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserRole" />
+  </wsdl:message>
+  <wsdl:message name="GetUserRoleSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserLocationByUserIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserLocationByUserID" />
+  </wsdl:message>
+  <wsdl:message name="GetUserLocationByUserIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserLocationByUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDepartmentByUserIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserDepartmentByUserID" />
+  </wsdl:message>
+  <wsdl:message name="GetUserDepartmentByUserIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserDepartmentByUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUserSecondSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUserSecond" />
+  </wsdl:message>
+  <wsdl:message name="AddUserSecondSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUserSecondResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModifyUserSecondSoapIn">
+    <wsdl:part name="parameters" element="tns:ModifyUserSecond" />
+  </wsdl:message>
+  <wsdl:message name="ModifyUserSecondSoapOut">
+    <wsdl:part name="parameters" element="tns:ModifyUserSecondResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SecurityServiceSoap">
+    <wsdl:operation name="GetServiceDateTime">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取服务器时间</wsdl:documentation>
+      <wsdl:input message="tns:GetServiceDateTimeSoapIn" />
+      <wsdl:output message="tns:GetServiceDateTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">获取更新信息</wsdl:documentation>
+      <wsdl:input message="tns:GetUpdateInfoSoapIn" />
+      <wsdl:output message="tns:GetUpdateInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfigSettingInit">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">初始化数据库连接字符串配置</wsdl:documentation>
+      <wsdl:input message="tns:ConfigSettingInitSoapIn" />
+      <wsdl:output message="tns:ConfigSettingInitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertProvideLocation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">由ProvideLocation信息 生成 ProvideLocation的信息</wsdl:documentation>
+      <wsdl:input message="tns:InsertProvideLocationSoapIn" />
+      <wsdl:output message="tns:InsertProvideLocationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationProvideLocationID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">拿取Location，并且含有ProvideLocationID的信息</wsdl:documentation>
+      <wsdl:input message="tns:GetLocationProvideLocationIDSoapIn" />
+      <wsdl:output message="tns:GetLocationProvideLocationIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertLocationCapacity">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">新增一个库位的库容</wsdl:documentation>
+      <wsdl:input message="tns:InsertLocationCapacitySoapIn" />
+      <wsdl:output message="tns:InsertLocationCapacitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLocatorAndCapacity">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">修改库位</wsdl:documentation>
+      <wsdl:input message="tns:UpdateLocatorAndCapacitySoapIn" />
+      <wsdl:output message="tns:UpdateLocatorAndCapacitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLocatorAndCapacity">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">删除库位</wsdl:documentation>
+      <wsdl:input message="tns:DeleteLocatorAndCapacitySoapIn" />
+      <wsdl:output message="tns:DeleteLocatorAndCapacitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckrContainerRelationForLocator">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">检查库位是否有库存</wsdl:documentation>
+      <wsdl:input message="tns:CheckrContainerRelationForLocatorSoapIn" />
+      <wsdl:output message="tns:CheckrContainerRelationForLocatorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationProvideLocationIDByTypeControlKey">
+      <wsdl:input message="tns:GetLocationProvideLocationIDByTypeControlKeySoapIn" />
+      <wsdl:output message="tns:GetLocationProvideLocationIDByTypeControlKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationTypeByTypeControlKey">
+      <wsdl:input message="tns:GetLocationTypeByTypeControlKeySoapIn" />
+      <wsdl:output message="tns:GetLocationTypeByTypeControlKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationByTypeControlKey">
+      <wsdl:input message="tns:GetLocationByTypeControlKeySoapIn" />
+      <wsdl:output message="tns:GetLocationByTypeControlKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationByTypeControlKeyParentID">
+      <wsdl:input message="tns:GetLocationByTypeControlKeyParentIDSoapIn" />
+      <wsdl:output message="tns:GetLocationByTypeControlKeyParentIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationTreeList">
+      <wsdl:input message="tns:GetLocationTreeListSoapIn" />
+      <wsdl:output message="tns:GetLocationTreeListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationTypeList">
+      <wsdl:input message="tns:GetLocationTypeListSoapIn" />
+      <wsdl:output message="tns:GetLocationTypeListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertLocation">
+      <wsdl:input message="tns:InsertLocationSoapIn" />
+      <wsdl:output message="tns:InsertLocationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckLocationIsExist">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">每组树内部,同类型或同等级不能重复</wsdl:documentation>
+      <wsdl:input message="tns:CheckLocationIsExistSoapIn" />
+      <wsdl:output message="tns:CheckLocationIsExistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLocation">
+      <wsdl:input message="tns:DeleteLocationSoapIn" />
+      <wsdl:output message="tns:DeleteLocationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLocation">
+      <wsdl:input message="tns:UpdateLocationSoapIn" />
+      <wsdl:output message="tns:UpdateLocationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationByName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">在Location中存在Name与传入字段相同</wsdl:documentation>
+      <wsdl:input message="tns:GetLocationByNameSoapIn" />
+      <wsdl:output message="tns:GetLocationByNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDepartmentTreeList">
+      <wsdl:input message="tns:GetDepartmentTreeListSoapIn" />
+      <wsdl:output message="tns:GetDepartmentTreeListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProvideLocationByCode">
+      <wsdl:input message="tns:GetProvideLocationByCodeSoapIn" />
+      <wsdl:output message="tns:GetProvideLocationByCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">用户登陆，NULL：所在公司的账号不存在； User：ID是Empty，Account有Value，代表有账号，但密码错误；</wsdl:documentation>
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">更改密码，返回的User和Login方法一样</wsdl:documentation>
+      <wsdl:input message="tns:ChangePasswordSoapIn" />
+      <wsdl:output message="tns:ChangePasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByUserName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">根据用户名称，获取用户信息</wsdl:documentation>
+      <wsdl:input message="tns:GetUserByUserNameSoapIn" />
+      <wsdl:output message="tns:GetUserByUserNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Decrypt">
+      <wsdl:input message="tns:DecryptSoapIn" />
+      <wsdl:output message="tns:DecryptSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Encrypt">
+      <wsdl:input message="tns:EncryptSoapIn" />
+      <wsdl:output message="tns:EncryptSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckServiceConnection">
+      <wsdl:input message="tns:CheckServiceConnectionSoapIn" />
+      <wsdl:output message="tns:CheckServiceConnectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRole">
+      <wsdl:input message="tns:AddRoleSoapIn" />
+      <wsdl:output message="tns:AddRoleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRole">
+      <wsdl:input message="tns:DeleteRoleSoapIn" />
+      <wsdl:output message="tns:DeleteRoleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRoles">
+      <wsdl:input message="tns:GetAllRolesSoapIn" />
+      <wsdl:output message="tns:GetAllRolesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRolesByCondition">
+      <wsdl:input message="tns:GetRolesByConditionSoapIn" />
+      <wsdl:output message="tns:GetRolesByConditionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPermissionByUser">
+      <wsdl:input message="tns:GetPermissionByUserSoapIn" />
+      <wsdl:output message="tns:GetPermissionByUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModiftyRole">
+      <wsdl:input message="tns:ModiftyRoleSoapIn" />
+      <wsdl:output message="tns:ModiftyRoleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllModules">
+      <wsdl:input message="tns:GetAllModulesSoapIn" />
+      <wsdl:output message="tns:GetAllModulesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllModuleList">
+      <wsdl:input message="tns:GetAllModuleListSoapIn" />
+      <wsdl:output message="tns:GetAllModuleListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginSecurityMgrSys">
+      <wsdl:input message="tns:LoginSecurityMgrSysSoapIn" />
+      <wsdl:output message="tns:LoginSecurityMgrSysSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input message="tns:GetUserSoapIn" />
+      <wsdl:output message="tns:GetUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <wsdl:input message="tns:AddUserSoapIn" />
+      <wsdl:output message="tns:AddUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyUser">
+      <wsdl:input message="tns:ModifyUserSoapIn" />
+      <wsdl:output message="tns:ModifyUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyPassword">
+      <wsdl:input message="tns:ModifyPasswordSoapIn" />
+      <wsdl:output message="tns:ModifyPasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <wsdl:input message="tns:DeleteUserSoapIn" />
+      <wsdl:output message="tns:DeleteUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <wsdl:input message="tns:GetAllUsersSoapIn" />
+      <wsdl:output message="tns:GetAllUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersByCondition">
+      <wsdl:input message="tns:GetUsersByConditionSoapIn" />
+      <wsdl:output message="tns:GetUsersByConditionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersByRoleID">
+      <wsdl:input message="tns:GetUsersByRoleIDSoapIn" />
+      <wsdl:output message="tns:GetUsersByRoleIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserRole">
+      <wsdl:input message="tns:GetUserRoleSoapIn" />
+      <wsdl:output message="tns:GetUserRoleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLocationByUserID">
+      <wsdl:input message="tns:GetUserLocationByUserIDSoapIn" />
+      <wsdl:output message="tns:GetUserLocationByUserIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDepartmentByUserID">
+      <wsdl:input message="tns:GetUserDepartmentByUserIDSoapIn" />
+      <wsdl:output message="tns:GetUserDepartmentByUserIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUserSecond">
+      <wsdl:input message="tns:AddUserSecondSoapIn" />
+      <wsdl:output message="tns:AddUserSecondSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyUserSecond">
+      <wsdl:input message="tns:ModifyUserSecondSoapIn" />
+      <wsdl:output message="tns:ModifyUserSecondSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SecurityServiceSoap" type="tns:SecurityServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetServiceDateTime">
+      <soap:operation soapAction="http://tempuri.org/GetServiceDateTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateInfo">
+      <soap:operation soapAction="http://tempuri.org/GetUpdateInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfigSettingInit">
+      <soap:operation soapAction="http://tempuri.org/ConfigSettingInit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertProvideLocation">
+      <soap:operation soapAction="http://tempuri.org/InsertProvideLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationProvideLocationID">
+      <soap:operation soapAction="http://tempuri.org/GetLocationProvideLocationID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertLocationCapacity">
+      <soap:operation soapAction="http://tempuri.org/InsertLocationCapacity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLocatorAndCapacity">
+      <soap:operation soapAction="http://tempuri.org/UpdateLocatorAndCapacity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLocatorAndCapacity">
+      <soap:operation soapAction="http://tempuri.org/DeleteLocatorAndCapacity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckrContainerRelationForLocator">
+      <soap:operation soapAction="http://tempuri.org/CheckrContainerRelationForLocator" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationProvideLocationIDByTypeControlKey">
+      <soap:operation soapAction="http://tempuri.org/GetLocationProvideLocationIDByTypeControlKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationTypeByTypeControlKey">
+      <soap:operation soapAction="http://tempuri.org/GetLocationTypeByTypeControlKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationByTypeControlKey">
+      <soap:operation soapAction="http://tempuri.org/GetLocationByTypeControlKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationByTypeControlKeyParentID">
+      <soap:operation soapAction="http://tempuri.org/GetLocationByTypeControlKeyParentID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationTreeList">
+      <soap:operation soapAction="http://tempuri.org/GetLocationTreeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationTypeList">
+      <soap:operation soapAction="http://tempuri.org/GetLocationTypeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertLocation">
+      <soap:operation soapAction="http://tempuri.org/InsertLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckLocationIsExist">
+      <soap:operation soapAction="http://tempuri.org/CheckLocationIsExist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLocation">
+      <soap:operation soapAction="http://tempuri.org/DeleteLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLocation">
+      <soap:operation soapAction="http://tempuri.org/UpdateLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationByName">
+      <soap:operation soapAction="http://tempuri.org/GetLocationByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDepartmentTreeList">
+      <soap:operation soapAction="http://tempuri.org/GetDepartmentTreeList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProvideLocationByCode">
+      <soap:operation soapAction="http://tempuri.org/GetProvideLocationByCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap:operation soapAction="http://tempuri.org/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByUserName">
+      <soap:operation soapAction="http://tempuri.org/GetUserByUserName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Decrypt">
+      <soap:operation soapAction="http://tempuri.org/Decrypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Encrypt">
+      <soap:operation soapAction="http://tempuri.org/Encrypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckServiceConnection">
+      <soap:operation soapAction="http://tempuri.org/CheckServiceConnection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRole">
+      <soap:operation soapAction="http://tempuri.org/AddRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRole">
+      <soap:operation soapAction="http://tempuri.org/DeleteRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRoles">
+      <soap:operation soapAction="http://tempuri.org/GetAllRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRolesByCondition">
+      <soap:operation soapAction="http://tempuri.org/GetRolesByCondition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPermissionByUser">
+      <soap:operation soapAction="http://tempuri.org/GetPermissionByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModiftyRole">
+      <soap:operation soapAction="http://tempuri.org/ModiftyRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllModules">
+      <soap:operation soapAction="http://tempuri.org/GetAllModules" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllModuleList">
+      <soap:operation soapAction="http://tempuri.org/GetAllModuleList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginSecurityMgrSys">
+      <soap:operation soapAction="http://tempuri.org/LoginSecurityMgrSys" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://tempuri.org/GetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap:operation soapAction="http://tempuri.org/AddUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyUser">
+      <soap:operation soapAction="http://tempuri.org/ModifyUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyPassword">
+      <soap:operation soapAction="http://tempuri.org/ModifyPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap:operation soapAction="http://tempuri.org/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <soap:operation soapAction="http://tempuri.org/GetAllUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersByCondition">
+      <soap:operation soapAction="http://tempuri.org/GetUsersByCondition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersByRoleID">
+      <soap:operation soapAction="http://tempuri.org/GetUsersByRoleID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserRole">
+      <soap:operation soapAction="http://tempuri.org/GetUserRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLocationByUserID">
+      <soap:operation soapAction="http://tempuri.org/GetUserLocationByUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDepartmentByUserID">
+      <soap:operation soapAction="http://tempuri.org/GetUserDepartmentByUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserSecond">
+      <soap:operation soapAction="http://tempuri.org/AddUserSecond" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyUserSecond">
+      <soap:operation soapAction="http://tempuri.org/ModifyUserSecond" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SecurityServiceSoap12" type="tns:SecurityServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetServiceDateTime">
+      <soap12:operation soapAction="http://tempuri.org/GetServiceDateTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetUpdateInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfigSettingInit">
+      <soap12:operation soapAction="http://tempuri.org/ConfigSettingInit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertProvideLocation">
+      <soap12:operation soapAction="http://tempuri.org/InsertProvideLocation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationProvideLocationID">
+      <soap12:operation soapAction="http://tempuri.org/GetLocationProvideLocationID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertLocationCapacity">
+      <soap12:operation soapAction="http://tempuri.org/InsertLocationCapacity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLocatorAndCapacity">
+      <soap12:operation soapAction="http://tempuri.org/UpdateLocatorAndCapacity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLocatorAndCapacity">
+      <soap12:operation soapAction="http://tempuri.org/DeleteLocatorAndCapacity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckrContainerRelationForLocator">
+      <soap12:operation soapAction="http://tempuri.org/CheckrContainerRelationForLocator" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationProvideLocationIDByTypeControlKey">
+      <soap12:operation soapAction="http://tempuri.org/GetLocationProvideLocationIDByTypeControlKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationTypeByTypeControlKey">
+      <soap12:operation soapAction="http://tempuri.org/GetLocationTypeByTypeControlKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationByTypeControlKey">
+      <soap12:operation soapAction="http://tempuri.org/GetLocationByTypeControlKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationByTypeControlKeyParentID">
+      <soap12:operation soapAction="http://tempuri.org/GetLocationByTypeControlKeyParentID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationTreeList">
+      <soap12:operation soapAction="http://tempuri.org/GetLocationTreeList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationTypeList">
+      <soap12:operation soapAction="http://tempuri.org/GetLocationTypeList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertLocation">
+      <soap12:operation soapAction="http://tempuri.org/InsertLocation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckLocationIsExist">
+      <soap12:operation soapAction="http://tempuri.org/CheckLocationIsExist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLocation">
+      <soap12:operation soapAction="http://tempuri.org/DeleteLocation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLocation">
+      <soap12:operation soapAction="http://tempuri.org/UpdateLocation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationByName">
+      <soap12:operation soapAction="http://tempuri.org/GetLocationByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDepartmentTreeList">
+      <soap12:operation soapAction="http://tempuri.org/GetDepartmentTreeList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProvideLocationByCode">
+      <soap12:operation soapAction="http://tempuri.org/GetProvideLocationByCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap12:operation soapAction="http://tempuri.org/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByUserName">
+      <soap12:operation soapAction="http://tempuri.org/GetUserByUserName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Decrypt">
+      <soap12:operation soapAction="http://tempuri.org/Decrypt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Encrypt">
+      <soap12:operation soapAction="http://tempuri.org/Encrypt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckServiceConnection">
+      <soap12:operation soapAction="http://tempuri.org/CheckServiceConnection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRole">
+      <soap12:operation soapAction="http://tempuri.org/AddRole" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteRole">
+      <soap12:operation soapAction="http://tempuri.org/DeleteRole" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRoles">
+      <soap12:operation soapAction="http://tempuri.org/GetAllRoles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRolesByCondition">
+      <soap12:operation soapAction="http://tempuri.org/GetRolesByCondition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPermissionByUser">
+      <soap12:operation soapAction="http://tempuri.org/GetPermissionByUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModiftyRole">
+      <soap12:operation soapAction="http://tempuri.org/ModiftyRole" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllModules">
+      <soap12:operation soapAction="http://tempuri.org/GetAllModules" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllModuleList">
+      <soap12:operation soapAction="http://tempuri.org/GetAllModuleList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginSecurityMgrSys">
+      <soap12:operation soapAction="http://tempuri.org/LoginSecurityMgrSys" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap12:operation soapAction="http://tempuri.org/GetUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap12:operation soapAction="http://tempuri.org/AddUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyUser">
+      <soap12:operation soapAction="http://tempuri.org/ModifyUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyPassword">
+      <soap12:operation soapAction="http://tempuri.org/ModifyPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteUser">
+      <soap12:operation soapAction="http://tempuri.org/DeleteUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <soap12:operation soapAction="http://tempuri.org/GetAllUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersByCondition">
+      <soap12:operation soapAction="http://tempuri.org/GetUsersByCondition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsersByRoleID">
+      <soap12:operation soapAction="http://tempuri.org/GetUsersByRoleID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserRole">
+      <soap12:operation soapAction="http://tempuri.org/GetUserRole" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLocationByUserID">
+      <soap12:operation soapAction="http://tempuri.org/GetUserLocationByUserID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserDepartmentByUserID">
+      <soap12:operation soapAction="http://tempuri.org/GetUserDepartmentByUserID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUserSecond">
+      <soap12:operation soapAction="http://tempuri.org/AddUserSecond" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyUserSecond">
+      <soap12:operation soapAction="http://tempuri.org/ModifyUserSecond" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SecurityService">
+    <wsdl:port name="SecurityServiceSoap" binding="tns:SecurityServiceSoap">
+      <soap:address location="http://localhost:38001/SecurityServer/SecurityService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SecurityServiceSoap12" binding="tns:SecurityServiceSoap12">
+      <soap12:address location="http://localhost:38001/SecurityServer/SecurityService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Class="CommonDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="" Member="ReturnMessage">
+    <Type Name="ReturnMessage">
+      <Column Name="Code" Type="System.Int32" CanBeNull="false" />
+      <Column Name="Message" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

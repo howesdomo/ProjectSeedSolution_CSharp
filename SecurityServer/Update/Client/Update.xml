@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<UpdateInfo>
+  <Version>1.0.1.0</Version>
+  <Items>
+    <Item>
+      <Url>Client.exe.zip</Url>
+      <LocalPaths>
+        <string>Client.exe</string>
+      </LocalPaths>
+    </Item>
+	<Item>
+      <Url>Util.dll.zip</Url>
+      <LocalPaths>
+        <string>Util.dll</string>
+      </LocalPaths>
+    </Item>
+  </Items>
+</UpdateInfo>
